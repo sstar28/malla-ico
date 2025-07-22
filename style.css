@@ -1,58 +1,63 @@
 body {
   font-family: sans-serif;
-  background-color: #f9f9f9;
+  background-color: #f4f4f4;
   text-align: center;
 }
 
 h1 {
-  margin: 20px 0;
-  color: #333;
+  color: #c3005b;
+  margin-top: 20px;
 }
 
 #malla {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 20px;
 }
 
 .semestre {
-  border: 2px solid #888;
-  border-radius: 10px;
-  padding: 15px;
-  min-width: 250px;
   background-color: #fff;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+  padding: 15px;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .semestre h2 {
-  margin-top: 0;
+  margin: 0 0 10px 0;
   color: #444;
+  font-size: 18px;
 }
 
 .ramo {
-  display: block;
-  margin: 8px 0;
+  margin: 6px 0;
   padding: 10px;
   border-radius: 6px;
-  cursor: pointer;
-  transition: 0.2s;
   font-size: 14px;
   font-weight: bold;
+  transition: 0.2s;
+  cursor: pointer;
 }
 
-.rosado {
-  background-color: #ffc0cb;
+.gris {
+  background-color: #d3d3d3;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.celeste {
+  background-color: #add8e6;
   color: #000;
 }
 
-.morado {
-  background-color: #dda0dd;
-  color: #fff;
+.azul {
+  background-color: #4682b4;
+  color: white;
   text-decoration: line-through;
-}
-
-.bloqueado {
-  background-color: #d3d3d3;
-  color: #777;
-  cursor: not-allowed;
 }
