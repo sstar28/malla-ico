@@ -1,24 +1,26 @@
 body {
   font-family: sans-serif;
   background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
   text-align: center;
 }
 
 h1 {
   color: #c3005b;
-  margin-top: 20px;
+  margin: 20px;
 }
 
 #malla {
   display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: nowrap;
+  flex-direction: row;
   overflow-x: auto;
   padding: 20px;
+  gap: 20px;
 }
 
 .semestre {
+  flex: 0 0 auto;
   background-color: #fff;
   border-radius: 8px;
   border: 2px solid #ddd;
