@@ -96,15 +96,25 @@ Object.keys(porSemestre)
 
       ramo.textContent = r.nombre;
 
-      if (!aprobado && cumpleRequisitos) {
-        ramo.onclick = () => {
-          aprobados.add(r.id);
-          render();
-        };
-      }
+if (cumpleRequisitos) {
+  ramo.onclick = () => {
+    if (aprobado) {
+      aprobados.delete(r.id); // desmarcar
+    } else {
+      aprobados.add(r.id);    // marcar
+    }
+    render();
+  };
+}
 
       semDiv.appendChild(ramo);
     });
 
     contenedor.appendChild(semDiv);
   });
+
+function reiniciarMalla() {
+  aprobados.clear();
+  render();
+}
+
