@@ -71,33 +71,24 @@ const ramos = [
   { id: "portafolio", nombre: "Desarrollo carrera y portafolio", prereqs: [], semestre: 10 },
 ];
 
-let aprobados = new Set();
-
-function render() {
-  const contenedor = document.getElementById("malla");
-  contenedor.innerHTML = "";
-
-  const porSemestre = {};
-  ramos.forEach(r => {
-    if (!porSemestre[r.semestre]) porSemestre[r.semestre] = [];
-    porSemestre[r.semestre].push(r);
-  });
-
-  Object.keys(porSemestre).sort().forEach(sem => {
+Object.keys(porSemestre)
+  .map(n => parseInt(n))         // convertir a número
+  .sort((a, b) => a - b)         // orden ascendente
+  .forEach(sem => {
     const semDiv = document.createElement("div");
     semDiv.className = "semestre";
     semDiv.innerHTML = `<h2>${sem}° semestre</h2>`;
 
     porSemestre[sem].forEach(r => {
-      const requisitosCumplidos = r.prereqs.every(p => aprobados.has(p));
       const aprobado = aprobados.has(r.id);
+      const cumpleRequisitos = r.prereqs.length === 0 || r.prereqs.every(p => aprobados.has(p));
 
       const ramo = document.createElement("div");
       ramo.className = "ramo";
 
       if (aprobado) {
         ramo.classList.add("azul");
-      } else if (!requisitosCumplidos && r.prereqs.length > 0) {
+      } else if (!cumpleRequisitos) {
         ramo.classList.add("gris");
       } else {
         ramo.classList.add("celeste");
@@ -105,7 +96,7 @@ function render() {
 
       ramo.textContent = r.nombre;
 
-      if (!aprobado && requisitosCumplidos) {
+      if (!aprobado && cumpleRequisitos) {
         ramo.onclick = () => {
           aprobados.add(r.id);
           render();
@@ -117,6 +108,3 @@ function render() {
 
     contenedor.appendChild(semDiv);
   });
-}
-
-render();
