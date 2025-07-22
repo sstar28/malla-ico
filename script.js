@@ -86,7 +86,7 @@ function render() {
   Object.keys(porSemestre).sort().forEach(sem => {
     const semDiv = document.createElement("div");
     semDiv.className = "semestre";
-    semDiv.innerHTML = `<h2>Semestre ${sem}</h2>`;
+    semDiv.innerHTML = `<h2>${sem}° semestre</h2>`;
 
     porSemestre[sem].forEach(r => {
       const requisitosCumplidos = r.prereqs.every(p => aprobados.has(p));
@@ -96,11 +96,11 @@ function render() {
       ramo.className = "ramo";
 
       if (aprobado) {
-        ramo.classList.add("morado");
+        ramo.classList.add("azul");
       } else if (!requisitosCumplidos && r.prereqs.length > 0) {
-        ramo.classList.add("bloqueado");
+        ramo.classList.add("gris");
       } else {
-        ramo.classList.add("rosado");
+        ramo.classList.add("celeste");
       }
 
       ramo.textContent = r.nombre;
